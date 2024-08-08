@@ -21,6 +21,7 @@ class Infantry : public Soldiers
 
     //from template method 
     public: 
+        Infantry(int num, string name);
         void engage(); //calls prepare and engage 
         void disenagage(); //calls retreat and rest
 

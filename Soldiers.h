@@ -14,15 +14,17 @@ class Soldiers
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
+        friend class Memento;
 
     //from prototype
     public: 
-        virtual Soldiers* clone(); // pure virutal? 
+        virtual Soldiers* clone() = 0; // pure virutal? 
+        virtual ~Soldiers();
 
     //from template method 
     public: 
-        virtual void engage(); //calls prepare and engage 
-        virtual void disenagage(); //calls retreat and rest
+        virtual void engage() =0; //calls prepare and engage 
+        virtual void disenagage() =0; //calls retreat and rest
 
     private:
         virtual void prepare() = 0; //abstract method
@@ -34,6 +36,11 @@ class Soldiers
     public:
         Memento* militusMemento(); // creates a memento containing a snapshot of its current state
         void vivificaMemento(Memento* mem); //restores its stae from the memento object 
+
+    //own
+    public: 
+        virtual int getUnitAmount() = 0;
+        virtual int getHealth() = 0;
 
 };
 
