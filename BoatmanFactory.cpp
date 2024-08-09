@@ -32,5 +32,5 @@ int BoatmanFactory::calculateTotalDefencePerUnit(){
 }
 
 BoatmanFactory::~BoatmanFactory(){
-
+    SoldierFactory::setSoldiers(nullptr);
 }

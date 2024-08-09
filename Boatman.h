@@ -9,27 +9,33 @@ using namespace std;
 
 class Boatman : public Soldiers
 {
-    public: 
+    public:
+        //constructor and destructor
         Boatman(int num, string name);
         virtual ~Boatman();
+        //getters 
         int getUnitAmount();
         int getHealth();
         int getDamage();
         int getDefence();
-        string getName();
-        void engage(); //calls prepare and engage 
+        string getName(); 
+        //from template method 
+        void engage(); //calls prepare and execute 
         void disenagage(); //calls retreat and rest
+        //from prototype
         virtual Soldiers* clone();
-
-    //from factory method 
+ 
     private:
-        int healthPerSoldier;
-        int damagePerSoldier;
-        int defencePerSoldier;
-        int amountOfSoldiersPerUnit;
+        //from factory method
+        int healthPerSoldier = 100;
+        int damagePerSoldier = 0;
+        int defencePerSoldier = 50;
+        int amountOfSoldiersPerUnit = 30;
         string unitName;
+        //additional attributes
         Weapon* weapon; 
-        bool inCombat;
+        bool inCombat; 
+        //from template method 
         void prepare(); 
         void execute();
         void retreat();

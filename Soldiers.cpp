@@ -11,8 +11,11 @@ using namespace std;
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
-        Weapon* weapon               
-*/
+        Weapon* weapon               */
+
+Soldiers::~Soldiers(){
+    
+}
 
 void Soldiers::engage(){
     prepare(); 

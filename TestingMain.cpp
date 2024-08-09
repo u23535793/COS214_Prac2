@@ -15,7 +15,7 @@
 //     Soldiers* FootMen = footmen->createUnit(num,"Many Men On Foot");
 //     cout << "The total health of footmen1 is " << footmen->calculateTotalHealthPerUnit() << endl;
 
-using namespace std;
+// using namespace std;
 
 int main()
 {

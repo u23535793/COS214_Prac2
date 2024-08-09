@@ -17,7 +17,6 @@ using namespace std;
         bool inCombat;           */
 
 Boatman::Boatman(int num, string name){
-
     healthPerSoldier = 100;
     damagePerSoldier = 0;
     defencePerSoldier = 0;
@@ -33,9 +32,16 @@ Soldiers* Boatman::clone(){
 }
 
 void Boatman::engage(){
-    prepare(); 
-    execute(); 
-
+    if (amountOfSoldiersPerUnit != 0)
+    {
+        prepare(); 
+        cout << "Boatman Unit " << unitName << " attacks with cannons." << endl; 
+        execute(); 
+    }
+    else 
+    {
+        cout << "All soldiers in Boatman Unit " << unitName << " have died. " << endl; 
+    }
 }
 
 void Boatman::disenagage(){
@@ -45,11 +51,11 @@ void Boatman::disenagage(){
 
 void Boatman::prepare(){
     healthPerSoldier = 100; 
-    defencePerSoldier = 70; 
+    defencePerSoldier = 80; 
     damagePerSoldier = 0; 
     weapon->reload(); 
     inCombat = true; 
-    cout << unitName << " is prepared for battle." << endl; 
+    cout << "Boatman Unit " << unitName << " is prepared for battle." << endl; 
 }
 
 void Boatman::execute(){
@@ -58,23 +64,26 @@ void Boatman::execute(){
     {
         damage += weapon->useWeapon(); 
     }
-    cout << unitName << " caused " << damage << " damage." << endl;   
-    this->healthPerSoldier-=30;
+    cout << "Boatman Unit " << unitName << " caused " << damage << " damage." << endl;  
+
+    this->damagePerSoldier = 30; // just an example of damage 
+    int dead = (this->damagePerSoldier * amountOfSoldiersPerUnit) / 100; 
+    if (amountOfSoldiersPerUnit == 3)
+    {
+        amountOfSoldiersPerUnit = 0; 
+        dead = 3;   
+    }
+    else amountOfSoldiersPerUnit = amountOfSoldiersPerUnit - dead; 
 }
 
 void Boatman::retreat(){
     inCombat = false; 
 
-    damagePerSoldier = 50; // just an example of damage 
-    int dead = damagePerSoldier/100 * amountOfSoldiersPerUnit; 
-    amountOfSoldiersPerUnit -= dead; 
-
-    if (amountOfSoldiersPerUnit < 0)
-        cout << "Unit " << unitName << "did not make it back." << endl; 
+    if (amountOfSoldiersPerUnit <= 0)
+        cout << "Boatman Unit " << unitName << " did not make it back." << endl; 
     else 
     {
-        cout << unitName << " is retreating." << endl; 
-        cout << dead << " soldiers from unit " << unitName << " have died." << endl; 
+        cout << "Boatman Unit " << unitName << " is retreating." << endl; 
     }
 
 }
@@ -85,7 +94,7 @@ void Boatman::rest(){
         healthPerSoldier = 100;
         damagePerSoldier = 0; 
         defencePerSoldier = 0; 
-        cout << unitName << " is resting. " << endl; 
+        cout << "Boatman Unit " << unitName << " is resting. " << endl; 
     } 
 }
 
@@ -109,5 +118,6 @@ string Boatman::getName(){
     return this->unitName; 
 }
 Boatman::~Boatman(){
-
+    delete weapon; 
+    weapon = nullptr; 
 }

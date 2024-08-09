@@ -52,29 +52,33 @@ void Infantry::prepare(){
     defencePerSoldier = 60; 
     damagePerSoldier = 0; 
     inCombat = true; 
-    cout << unitName << " is prepared for battle." << endl; 
+    cout << "Infantry Unit " << unitName << " is prepared for battle." << endl; 
 
 }
 
 void Infantry::execute(){
     int damage = weapon->useWeapon();
-    cout << unitName << " caused " << damage << " damage." << endl; 
+    cout << "Infantry Unit " << unitName << " caused " << damage << " damage." << endl; 
+
+    this->damagePerSoldier = 30; // just an example of damage 
+    int dead = (this->damagePerSoldier * amountOfSoldiersPerUnit) / 100; 
+    if (amountOfSoldiersPerUnit == 3)
+    {
+        amountOfSoldiersPerUnit = 0; 
+        dead = 3;   
+    }
+    else amountOfSoldiersPerUnit = amountOfSoldiersPerUnit - dead; 
 
 }
 
 void Infantry::retreat(){
     inCombat = false; 
 
-    damagePerSoldier = 50; // just an example of damage 
-    int dead = damagePerSoldier/100 * amountOfSoldiersPerUnit; 
-    amountOfSoldiersPerUnit -= dead; 
-
-    if (amountOfSoldiersPerUnit < 0)
-        cout << "Unit " << unitName << "did not make it back." << endl; 
+    if (amountOfSoldiersPerUnit <= 0)
+        cout << "Infantry Unit " << unitName << " did not make it back." << endl; 
     else 
     {
-        cout << unitName << " is retreating." << endl; 
-        cout << dead << " soldiers from unit " << unitName << " have died." << endl; 
+        cout << "Infantry Unit " << unitName << " is retreating." << endl; 
     }
     
 }
@@ -85,7 +89,7 @@ void Infantry::rest(){
         healthPerSoldier = 80;
         damagePerSoldier = 0; 
         defencePerSoldier = 0; 
-        cout << unitName << " is resting. " << endl; 
+        cout << "Infantry Unit " << unitName << " is resting. " << endl; 
     } 
 } 
 
@@ -110,5 +114,6 @@ string Infantry::getName(){
 }
 
 Infantry::~Infantry(){
-    
+    delete weapon; 
+    weapon = nullptr; 
 }

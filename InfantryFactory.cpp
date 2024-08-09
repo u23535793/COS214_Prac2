@@ -26,5 +26,5 @@ int InfantryFactory::calculateTotalDefencePerUnit(){
     return soldiers->getUnitAmount()*soldiers->getDefence();
 }
 InfantryFactory::~InfantryFactory(){
-
+    SoldierFactory::setSoldiers(nullptr);
 }
