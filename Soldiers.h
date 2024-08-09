@@ -2,11 +2,21 @@
 #define SOLDIERS_H
 
 #include "Memento.h"
+#include "Weapon.h"
+
 #include <string>
 using namespace std; 
 
 class Soldiers 
 {
+    public: 
+        virtual ~Soldiers();
+        virtual int getUnitAmount() = 0;
+        virtual int getHealth() = 0;
+        virtual int getDamage() = 0;
+        virtual int getDefence() = 0;
+        virtual string getName() = 0; 
+
     //from factory method
     private: 
         int healthPerSoldier;
@@ -14,6 +24,7 @@ class Soldiers
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
+        Weapon* weapon; 
 
     //from prototype
     public: 
@@ -22,8 +33,8 @@ class Soldiers
 
     //from template method 
     public: 
-        virtual void engage() =0; //calls prepare and engage 
-        virtual void disenagage() =0; //calls retreat and rest
+        virtual void engage(); //calls prepare and execute 
+        virtual void disenagage(); //calls retreat and rest
 
     private:
         virtual void prepare() = 0; //abstract method
@@ -47,6 +58,3 @@ class Soldiers
 };
 
 #endif 
-
-//according to factory method: this class is ABSTRACT 
-// -- need to add a pure virtual function and implement in Infantry, ShieldBearer & Boatman

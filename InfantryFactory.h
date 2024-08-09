@@ -11,7 +11,7 @@ class InfantryFactory : public SoldierFactory
         virtual int calculateTotalHealthPerUnit();
         virtual int calculateTotalDamagePerUnit();
         virtual int calculateTotalDefencePerUnit();
-        virtual ~InfantryFactory();
+        virtual ~InfantryFactory(); 
 
 };
 

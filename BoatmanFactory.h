@@ -1,4 +1,3 @@
-
 #ifndef BOATMANFACTORY_H
 #define BOATMANFACTORY_H
 
@@ -12,7 +11,6 @@ class BoatmanFactory: public SoldierFactory
         virtual int calculateTotalHealthPerUnit();
         virtual int calculateTotalDamagePerUnit();
         virtual int calculateTotalDefencePerUnit();
-        // virtual void printSoldiers();
         virtual ~BoatmanFactory();
 
 };

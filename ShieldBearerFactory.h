@@ -12,7 +12,7 @@ class ShieldBearerFactory : public SoldierFactory
         virtual int calculateTotalDamagePerUnit();
         virtual int calculateTotalDefencePerUnit();
         virtual ~ShieldBearerFactory();
-
+        
 };
 
 #endif
