@@ -11,12 +11,15 @@ class ShieldBearer : public Soldiers
 {
     public: 
         ShieldBearer(int num, string name);
-        virtual ~ShieldBearer(); 
+        virtual ~ShieldBearer();
         int getUnitAmount();
         int getHealth();
         int getDamage();
         int getDefence();
         string getName();
+        void engage(); //calls prepare and engage 
+        void disenagage(); //calls retreat and rest
+        virtual Soldiers* clone();
 
     //from factory method 
     private:
@@ -27,27 +30,10 @@ class ShieldBearer : public Soldiers
         string unitName;
         Weapon* weapon; 
         bool inCombat;
-
-    //from prototype
-    public: 
-        virtual Soldiers* clone();
-        virtual ~ShieldBearer();
-
-    //from template method 
-    public: 
-        ShieldBearer(int num, string name);
-        void engage(); //calls prepare and engage 
-        void disenagage(); //calls retreat and rest
-        int getUnitAmount();
-        int getHealth();
-        int getDamage();
-        int getDefence();
-
-    private:
         void prepare(); 
         void execute();
         void retreat();
-        void rest(); 
+        void rest();
 
 }; 
 

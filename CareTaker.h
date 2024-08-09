@@ -8,16 +8,20 @@
    them based on the game’s need (like undo functionality) */
 
 #include <iostream>
+#include <vector>
 #include "Memento.h"
 #include "Soldiers.h"
+
+using namespace std;
 
 class CareTaker{
 
    private:
-      Memento** mementos;
+      static vector<Memento*> mementos;
 
    public:
-      Memento* retrieveMemento(Memento*);
+      static Memento* retrieveMemento(Memento*);
+      static void storeMemento(Memento*);
       ~CareTaker();
 
 };

@@ -4,6 +4,17 @@
 #include "Boatman.h"
 #include "BoatmanFactory.h"
 
+//     int num = 10;
+//     // cout << "How many boatmen do you want in this unit?";
+//     // cin>>num;
+//     BoatmanFactory* boatmen1 = new BoatmanFactory();
+//     Soldiers* ManyMen = boatmen1->createUnit(num,"Many Men");
+//     cout << "The total health of boatmen1 is " << boatmen1->calculateTotalHealthPerUnit() << endl;
+
+//     InfantryFactory* footmen = new InfantryFactory();
+//     Soldiers* FootMen = footmen->createUnit(num,"Many Men On Foot");
+//     cout << "The total health of footmen1 is " << footmen->calculateTotalHealthPerUnit() << endl;
+
 using namespace std;
 
 int main()
@@ -38,7 +49,9 @@ int main()
         cout << "You have 0 Boatman units in your army. " << endl; 
     }
 
-    if (manyMen != nullptr)
+    Memento* manyMenState = manyMen->militusMemento();
+
+    if(manyMen != nullptr)
     {
         char response = 'N'; 
         cout << "Would you like to send " << manyMen->getName() << " to war? [Y/N]  ";
@@ -56,9 +69,11 @@ int main()
         {
             manyMen->engage(); 
         }        
-
-
     }
+
+    cout<<"The health of many men before restoration is:" << manyMen->getHealth() <<endl;
+    manyMen->vivificaMemento(manyMenState);
+    cout<<"The health of many men after restoration is:" << manyMen->getHealth() <<endl;
     
     delete boatmen1;
     

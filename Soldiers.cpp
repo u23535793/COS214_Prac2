@@ -11,11 +11,8 @@ using namespace std;
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
-        Weapon* weapon               */
-
-Soldiers::~Soldiers(){
-    // delete weapon; 
-}
+        Weapon* weapon               
+*/
 
 void Soldiers::engage(){
     prepare(); 
@@ -30,12 +27,19 @@ void Soldiers::disenagage(){
 }
  
 Memento*Soldiers::militusMemento(){
-    Memento(this->healthPerSoldier,this->damagePerSoldier, this->defencePerSoldier, this->amountOfSoldiersPerUnit, this->unitName);
+    Memento* memento = new Memento(this->healthPerSoldier,this->damagePerSoldier, this->defencePerSoldier, this->amountOfSoldiersPerUnit, this->unitName);
+    return memento;
 }
 void Soldiers::vivificaMemento(Memento* mem){
 
-    CareTaker careTaker = CareTaker();
-    Memento* restore = careTaker.retrieveMemento(mem);
+    Memento* restore = CareTaker::retrieveMemento(mem);
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+    
     this->healthPerSoldier = restore->healthPerSoldier;
     this->damagePerSoldier = restore->damagePerSoldier;
     this->defencePerSoldier = restore->defencePerSoldier;
@@ -44,5 +48,5 @@ void Soldiers::vivificaMemento(Memento* mem){
 }
 
 Soldiers::~Soldiers(){
-
+    // delete weapon; 
 }

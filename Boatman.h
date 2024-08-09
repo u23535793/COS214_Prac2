@@ -9,40 +9,27 @@ using namespace std;
 
 class Boatman : public Soldiers
 {
-    public:
+    public: 
         Boatman(int num, string name);
         virtual ~Boatman();
         int getUnitAmount();
         int getHealth();
         int getDamage();
         int getDefence();
-        string getName(); 
+        string getName();
+        void engage(); //calls prepare and engage 
+        void disenagage(); //calls retreat and rest
+        virtual Soldiers* clone();
 
     //from factory method 
     private:
-        int healthPerSoldier = 100;
-        int damagePerSoldier = 0;
-        int defencePerSoldier = 50;
-        int amountOfSoldiersPerUnit = 30;
+        int healthPerSoldier;
+        int damagePerSoldier;
+        int defencePerSoldier;
+        int amountOfSoldiersPerUnit;
         string unitName;
         Weapon* weapon; 
-        bool inCombat; 
-
-    //from prototype
-    public: 
-        virtual Soldiers* clone();
-        virtual ~Boatman();
-
-    //from template method 
-    public: 
-        void engage(); //calls prepare and execute 
-        void disenagage(); //calls retreat and rest
-        int getUnitAmount();
-        int getHealth();
-        int getDamage();
-        int getDefence();
-
-    private:
+        bool inCombat;
         void prepare(); 
         void execute();
         void retreat();

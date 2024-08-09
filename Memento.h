@@ -14,7 +14,6 @@ class Memento
         string unitName;
         Memento(int health, int damage, int defence, int unitAmount, string unitName); 
         friend class Soldiers;
-    public:
         
 };
 

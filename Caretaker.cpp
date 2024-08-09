@@ -1,26 +1,27 @@
 #include "CareTaker.h"
 
+vector<Memento*> CareTaker::mementos;
+
 Memento* CareTaker::retrieveMemento(Memento* stateToRetrieve){
-    if(mementos!=nullptr){
-        int i = 0;
-        while(mementos[i]!=nullptr && mementos[i]==stateToRetrieve){
+
+    for (int i = 0; i < mementos.size(); ++i) {
+        if (mementos[i] == stateToRetrieve) {
             return mementos[i];
         }
     }
-    else
-        return nullptr;
+}
+
+void CareTaker::storeMemento(Memento* memento){
+    mementos.push_back(memento);  
 }
 
 CareTaker::~CareTaker(){
-    if(mementos!=nullptr){
-        int i=0;
+//    for (int i = 0; i < mementos.size(); ++i) {
+//         if (mementos[i] != nullptr) {
+//             delete mementos[i];
+//             mementos[i] = nullptr;
+//         }
+//     }
 
-        while(mementos[i]!=nullptr){
-            delete mementos[i];
-            mementos[i] = nullptr;
-            i++;
-        }
-    }
-    
-    mementos = nullptr;
+    mementos.clear();
 }
