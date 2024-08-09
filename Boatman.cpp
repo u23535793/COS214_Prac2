@@ -44,6 +44,14 @@ int Boatman::getUnitAmount(){
     return this->amountOfSoldiersPerUnit;
 }
 
+int Boatman::getDamage(){
+    return this->amountOfSoldiersPerUnit;
+}
+
+int Boatman::getDefence(){
+    return this->amountOfSoldiersPerUnit;
+}
+
 Boatman::~Boatman(){
 
 }

@@ -27,6 +27,8 @@ class Boatman : public Soldiers
         void disenagage(); //calls retreat and rest
         int getUnitAmount();
         int getHealth();
+        int getDamage();
+        int getDefence();
 
     private:
         void prepare(); 

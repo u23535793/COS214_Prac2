@@ -18,12 +18,17 @@ class ShieldBearer : public Soldiers
     //from prototype
     public: 
         virtual Soldiers* clone();
+        virtual ~ShieldBearer();
 
     //from template method 
     public: 
         ShieldBearer(int num, string name);
         void engage(); //calls prepare and engage 
         void disenagage(); //calls retreat and rest
+        int getUnitAmount();
+        int getHealth();
+        int getDamage();
+        int getDefence();
 
     private:
         void prepare(); 

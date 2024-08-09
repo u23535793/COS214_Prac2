@@ -41,6 +41,9 @@ class Soldiers
     public: 
         virtual int getUnitAmount() = 0;
         virtual int getHealth() = 0;
+        virtual int getDamage() = 0;
+        virtual int getDefence() = 0;
+
 
 };
 

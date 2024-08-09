@@ -1,28 +1,30 @@
-#include <InfantryFactory.h>
-#include <Infantry.h>
+#include "InfantryFactory.h"
+#include "Infantry.h"
 
 #include <iostream>
 using namespace std;
 
-
 Soldiers* InfantryFactory::createUnit(int num, string name){
 
     Soldiers* boatmen = new Infantry(num, name);
-    cout << "Unit " <<name<< " created successfully!" << endl;
+    SoldierFactory::setSoldiers(boatmen);
     return boatmen;
-
 }
-int InfantryFactory::calculateTotalHealthPerUnit(){
-    return 0;
 
+int InfantryFactory::calculateTotalHealthPerUnit(){
+
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getHealth();
 }
 int InfantryFactory::calculateTotalDamagePerUnit(){
-    return 0;
+
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getDamage();
 }
 int InfantryFactory::calculateTotalDefencePerUnit(){
-    return 0;
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getDefence();
 }
-
 InfantryFactory::~InfantryFactory(){
 
 }

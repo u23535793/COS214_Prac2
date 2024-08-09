@@ -9,45 +9,25 @@ using namespace std;
 
 Soldiers* BoatmanFactory::createUnit(int num, string name){
 
-    Boatman boatman = Boatman(num, name);
-    Soldiers* boatmen[num];
-    boatman.clone();
-
-    for(int i=0; i<num; i++){
-        boatmen[i] = boatman.clone();
-    }
-
-    cout << "Unit " <<name<< " created successfully!" << endl;
-    SoldierFactory::setSoldiers(*boatmen);
-
-    return *boatmen;
+    Soldiers* boatmen = new Boatman(num, name);
+    SoldierFactory::setSoldiers(boatmen);
+    return boatmen;
 }
 
 int BoatmanFactory::calculateTotalHealthPerUnit(){
 
-    Soldiers* soldiers =  SoldierFactory::getSoldiers();
-    int totalH = 0;
-    // cout << soldiers->getUnitAmount() << endl;
-   
-//    for(int i=0; i<soldiers->getUnitAmount(); i++){
-//         totalH += soldiers[i].getHealth();
-//         cout << soldiers[i].getHealth() << endl;
-//    }
-
-   return totalH;
-
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getHealth();
 }
 int BoatmanFactory::calculateTotalDamagePerUnit(){
-    return 0;
+
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getDamage();
 }
 int BoatmanFactory::calculateTotalDefencePerUnit(){
-    return 0;
+    Soldiers* soldiers = SoldierFactory::getSoldiers();
+    return soldiers->getUnitAmount()*soldiers->getDefence();
 }
-
-void BoatmanFactory::printSoldiers(){
-    // for()
-}
-
 BoatmanFactory::~BoatmanFactory(){
 
 }
