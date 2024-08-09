@@ -10,34 +10,32 @@ using namespace std;
 class Infantry : public Soldiers
 {
     public: 
+        //constructor and destructor
         Infantry(int num, string name);
         virtual ~Infantry();
+        //getters
         int getUnitAmount();
         int getHealth();
         int getDamage();
         int getDefence();
         string getName();
+        //from template method 
+        void engage(); //calls prepare and engage 
+        void disenagage(); //calls retreat and rest
+        //from prototype
+        virtual Soldiers* clone();
 
-    //from factory method 
     private:
+        //from factory method 
         int healthPerSoldier;
         int damagePerSoldier;
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
+        //additional attributes
         Weapon* weapon; 
         bool inCombat;
-    
-    //from prototype
-    public: 
-        virtual Soldiers* clone();
-
-    //from template method 
-    public: 
-        void engage(); //calls prepare and engage 
-        void disenagage(); //calls retreat and rest
-
-    private:
+        //from template method
         void prepare(); 
         void execute();
         void retreat();

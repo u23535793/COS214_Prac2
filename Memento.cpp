@@ -1,4 +1,5 @@
 #include "Memento.h"
+#include "CareTaker.h"
 
 #include <iostream>
 using namespace std; 
@@ -10,4 +11,5 @@ Memento::Memento(int health, int damage, int defence, int unitAmount, string uni
     this->defencePerSoldier = defence;
     this->amountOfSoldiersPerUnit = unitAmount;
     this->unitName = unitName;
+    CareTaker::storeMemento(this);
 }

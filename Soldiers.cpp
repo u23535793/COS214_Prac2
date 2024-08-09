@@ -12,7 +12,7 @@ using namespace std;
         Weapon* weapon               */
 
 Soldiers::~Soldiers(){
-    // delete weapon; 
+    
 }
 
 void Soldiers::engage(){

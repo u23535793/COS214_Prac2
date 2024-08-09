@@ -25,8 +25,16 @@ Soldiers* ShieldBearer::clone(){
 }
 
 void ShieldBearer::engage(){
-    prepare(); 
-    execute(); 
+    if (amountOfSoldiersPerUnit != 0)
+    {
+        prepare(); 
+        cout << "ShieldBearer Unit " << unitName << " attacks with spears." << endl; 
+        execute(); 
+    }
+    else 
+    {
+        cout << "All soldiers in ShieldBearer Uunit " << unitName << " have died. " << endl; 
+    }
 
 }
 
@@ -38,32 +46,35 @@ void ShieldBearer::disenagage(){
 
 void ShieldBearer::prepare(){
     healthPerSoldier = 100; 
-    defencePerSoldier = 80; 
+    defencePerSoldier = 90; 
     damagePerSoldier = 0; 
     inCombat = true; 
-    cout << unitName << " is prepared for battle." << endl;
+    cout << "ShieldBearer Unit " << unitName << " is prepared for battle." << endl;
 
 }
 
 void ShieldBearer::execute(){
-    int damage = weapon->useWeapon();
-    cout << unitName << " caused " << damage << " damage." << endl; 
-
+    int damage = weapon->useWeapon() * 10;
+    cout << "ShieldBearer Unit " << unitName << " caused " << damage << " damage. " << endl; 
+    
+    this->damagePerSoldier = 30; // just an example of damage 
+    int dead = (this->damagePerSoldier * amountOfSoldiersPerUnit) / 100; 
+    if (amountOfSoldiersPerUnit == 3)
+    {
+        amountOfSoldiersPerUnit = 0; 
+        dead = 3;   
+    }
+    else amountOfSoldiersPerUnit = amountOfSoldiersPerUnit - dead; 
 }
 
 void ShieldBearer::retreat(){
     inCombat = false; 
 
-    damagePerSoldier = 50; // just an example of damage 
-    int dead = damagePerSoldier/100 * amountOfSoldiersPerUnit; 
-    amountOfSoldiersPerUnit -= dead; 
-
-    if (amountOfSoldiersPerUnit < 0)
-        cout << "Unit " << unitName << "did not make it back." << endl; 
+    if (amountOfSoldiersPerUnit <= 0)
+        cout << "ShieldBearer Unit " << unitName << " did not make it back." << endl; 
     else 
     {
-        cout << unitName << " is retreating." << endl; 
-        cout << dead << " soldiers from unit " << unitName << " have died." << endl; 
+        cout << "ShieldBearer Unit " << unitName << " is retreating." << endl; 
     }
 
 }
@@ -74,7 +85,7 @@ void ShieldBearer::rest(){
         healthPerSoldier = 80;
         damagePerSoldier = 0; 
         defencePerSoldier = 0; 
-        cout << unitName << " is resting. " << endl; 
+        cout << "ShieldBearer Unit " << unitName << " is resting. " << endl; 
     } 
     
 } 
@@ -100,5 +111,6 @@ string ShieldBearer::getName(){
 }
 
 ShieldBearer::~ShieldBearer(){
-
+    delete weapon; 
+    weapon = nullptr; 
 } 

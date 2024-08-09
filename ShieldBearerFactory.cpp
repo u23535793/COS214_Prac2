@@ -26,5 +26,5 @@ int ShieldBearerFactory::calculateTotalDefencePerUnit(){
 }
 
 ShieldBearerFactory::~ShieldBearerFactory(){
-
+    SoldierFactory::setSoldiers(nullptr);
 }

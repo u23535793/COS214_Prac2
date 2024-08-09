@@ -13,13 +13,10 @@ class SoldierFactory
         virtual int calculateTotalHealthPerUnit() = 0;
         virtual int calculateTotalDamagePerUnit() = 0;
         virtual int calculateTotalDefencePerUnit() = 0;
-        virtual ~SoldierFactory() = 0;
         virtual void setSoldiers(Soldiers* soldiers);
         virtual Soldiers* getSoldiers();
+
 };
 
 #endif 
-
-// according to factory method: needs to be ABSTRACT 
-// does other methods need to be pure virtual? 
 

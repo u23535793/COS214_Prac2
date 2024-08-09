@@ -11,7 +11,3 @@ void SoldierFactory::setSoldiers(Soldiers* soldiers){
 Soldiers* SoldierFactory::getSoldiers(){
     return soldiers;
 }
-
-SoldierFactory::~SoldierFactory(){
-
-}
