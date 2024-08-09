@@ -46,11 +46,11 @@ int Infantry::getUnitAmount(){
 }
 
 int Infantry::getDamage(){
-    return this->amountOfSoldiersPerUnit; // need to change to damage per soldier
+    return this->damagePerSoldier; // need to change to damage per soldier
 }
 
 int Infantry::getDefence(){
-    return this->amountOfSoldiersPerUnit; // need to chnage to defence per soldier
+    return this->defencePerSoldier; // need to chnage to defence per soldier
 }
 
 Infantry::~Infantry(){

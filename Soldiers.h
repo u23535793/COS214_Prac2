@@ -14,7 +14,6 @@ class Soldiers
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
         string unitName;
-        friend class Memento;
 
     //from prototype
     public: 

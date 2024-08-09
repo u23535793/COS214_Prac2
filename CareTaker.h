@@ -7,3 +7,18 @@
    Implement methods to add new mementos to the collection and retrieve 
    them based on the game’s need (like undo functionality) */
 
+#include <iostream>
+#include "Memento.h"
+#include "Soldiers.h"
+
+class CareTaker{
+
+   private:
+      Memento** mementos;
+
+   public:
+      Memento* retrieveMemento(Memento*);
+      ~CareTaker();
+
+};
+

@@ -45,11 +45,11 @@ int ShieldBearer::getUnitAmount(){
 }
 
 int ShieldBearer::getDamage(){
-    return this->amountOfSoldiersPerUnit;
+    return this->damagePerSoldier;
 }
 
 int ShieldBearer::getDefence(){
-    return this->amountOfSoldiersPerUnit;
+    return this->defencePerSoldier;
 }
 
 ShieldBearer::~ShieldBearer(){

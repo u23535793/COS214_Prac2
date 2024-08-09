@@ -16,12 +16,14 @@ int main()
     // cout << "How many boatmen do you want in this unit?";
     // cin>>num;
     BoatmanFactory* boatmen1 = new BoatmanFactory();
-    boatmen1->createUnit(num,"Many Men");
+    Soldiers* ManyMen = boatmen1->createUnit(num,"Many Men");
     cout << "The total health of boatmen1 is " << boatmen1->calculateTotalHealthPerUnit() << endl;
 
     InfantryFactory* footmen = new InfantryFactory();
-    footmen->createUnit(num,"Many Men On Foot");
+    Soldiers* FootMen = footmen->createUnit(num,"Many Men On Foot");
     cout << "The total health of footmen1 is " << footmen->calculateTotalHealthPerUnit() << endl;
+
+    Memento* FootMenState = FootMen->militusMemento();
 
     // delete boatmen1;
     
