@@ -2,18 +2,31 @@
 #define BOATMAN_H 
 
 #include "Soldiers.h"
+#include "Weapon.h"
+
 #include <string>
 using namespace std; 
 
 class Boatman : public Soldiers
 {
+    public:
+        Boatman(int num, string name);
+        virtual ~Boatman();
+        int getUnitAmount();
+        int getHealth();
+        int getDamage();
+        int getDefence();
+        string getName(); 
+
     //from factory method 
     private:
-        int healthPerSoldier;
-        int damagePerSoldier;
-        int defencePerSoldier;
-        int amountOfSoldiersPerUnit;
+        int healthPerSoldier = 100;
+        int damagePerSoldier = 0;
+        int defencePerSoldier = 50;
+        int amountOfSoldiersPerUnit = 30;
         string unitName;
+        Weapon* weapon; 
+        bool inCombat; 
 
     //from prototype
     public: 
@@ -21,7 +34,7 @@ class Boatman : public Soldiers
 
     //from template method 
     public: 
-        void engage(); //calls prepare and engage 
+        void engage(); //calls prepare and execute 
         void disenagage(); //calls retreat and rest
 
     private:

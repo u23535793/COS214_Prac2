@@ -7,10 +7,11 @@
 class InfantryFactory : public SoldierFactory
 {
     public:
-        virtual Soldiers* createUnit();
+        virtual Soldiers* createUnit(int num, string name);
         virtual int calculateTotalHealthPerUnit();
         virtual int calculateTotalDamagePerUnit();
         virtual int calculateTotalDefencePerUnit();
+        virtual ~InfantryFactory(); 
 
 };
 
