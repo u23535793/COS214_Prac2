@@ -21,7 +21,7 @@ class Infantry : public Soldiers
         string getName();
         //from template method 
         void engage(); //calls prepare and engage 
-        void disenagage(); //calls retreat and rest
+        void disengage(); //calls retreat and rest
         //from prototype
         virtual Soldiers* clone();
 

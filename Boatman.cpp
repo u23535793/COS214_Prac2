@@ -3,6 +3,7 @@
 #include "Boatman.h"
 #include "Weapon.h"
 #include "Cannon.h"
+#include "SoldierFactory.h"
 
 #include <iostream>
 using namespace std; 
@@ -44,7 +45,7 @@ void Boatman::engage(){
     }
 }
 
-void Boatman::disenagage(){
+void Boatman::disengage(){
     retreat();
     rest(); 
 }
@@ -96,6 +97,12 @@ void Boatman::rest(){
         defencePerSoldier = 0; 
         cout << "Boatman Unit " << unitName << " is resting. " << endl; 
     } 
+    else 
+    {
+        healthPerSoldier = 0;
+        damagePerSoldier = 0; 
+        defencePerSoldier = 0;
+    }
 }
 
 int Boatman::getHealth(){

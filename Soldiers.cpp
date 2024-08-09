@@ -21,8 +21,16 @@ void Soldiers::engage(){
 
 } 
 
-void Soldiers::disenagage(){
+void Soldiers::disengage(){
     retreat();
     rest(); 
 
+}
+
+Memento* Soldiers::militusMemento(){
+
+}
+
+void Soldiers::vivificaMemento(Memento* mem){
+    
 }
