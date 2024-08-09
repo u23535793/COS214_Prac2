@@ -6,6 +6,7 @@ using namespace std;
 Infantry::Infantry(int num, string name){
 
     healthPerSoldier = 80; //because they walk on foot so much
+    //we can make it 100 for the first time, but we can change it in rest() to 80
     damagePerSoldier = 0;
     defencePerSoldier = 20;
     amountOfSoldiersPerUnit = num;
@@ -45,11 +46,11 @@ int Infantry::getUnitAmount(){
 }
 
 int Infantry::getDamage(){
-    return this->amountOfSoldiersPerUnit;
+    return this->amountOfSoldiersPerUnit; // need to change to damage per soldier
 }
 
 int Infantry::getDefence(){
-    return this->amountOfSoldiersPerUnit;
+    return this->amountOfSoldiersPerUnit; // need to chnage to defence per soldier
 }
 
 Infantry::~Infantry(){
