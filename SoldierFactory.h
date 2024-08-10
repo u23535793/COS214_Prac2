@@ -5,17 +5,16 @@
 
 class SoldierFactory
 {
-    private:
-        Soldiers* soldiers;
-
     protected:
+        Soldiers* soldiers;
         virtual Soldiers* createUnit(int num, string name) = 0;
         virtual int calculateTotalHealthPerUnit() = 0;
         virtual int calculateTotalDamagePerUnit() = 0;
         virtual int calculateTotalDefencePerUnit() = 0;
-        virtual void setSoldiers(Soldiers* soldiers);
-        virtual Soldiers* getSoldiers();
 
+    public:
+        virtual ~SoldierFactory(); 
+        
 };
 
 #endif 

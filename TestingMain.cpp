@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "Boatman.h"
 #include "BoatmanFactory.h"
 #include "Cannon.h"
@@ -15,13 +13,11 @@
 #include "Spear.h"
 #include "Sword.h"
 
+#include <iostream>
 using namespace std;
 
 int main()
 {
-// HAVEN'T TESTED CARETAKER 
-// HAVEN'T TESTED MEMENTO
-
     //testing boatman 
         cout << "testing boatman only" << endl; 
         //constructor
@@ -407,5 +403,65 @@ int main()
         cout << "sword supply after attempted reload: " << sword->getSupply() << endl; 
         delete sword; 
         sword = nullptr; 
-        
+    
+    //testing memento and caretaker
+    cout << endl; 
+    Memento *boatmanProgess, *infantryProgress, *shieldProgress;
+    cout << "testing memento for boatman"<< endl; 
+    BoatmanFactory *b = new BoatmanFactory(); 
+    Soldiers *manyBoatman = b->createUnit(100, "ManyBoatmen"); 
+    cout << manyBoatman->getName() << " created with " << manyBoatman->getUnitAmount() << " soldiers" << endl; 
+    boatmanProgess = manyBoatman->militusMemento();
+    cout<<"Boatman Unit " << manyBoatman->getName() << "'s progress has been saved!" << endl;
+    manyBoatman->engage(); 
+    manyBoatman->disengage(); 
+    cout << manyBoatman->getName() << " have returned from war with " << manyBoatman->getUnitAmount() << " soldiers" << endl; 
+    manyBoatman->vivificaMemento(boatmanProgess);
+    cout<<"Boatman Unit " << manyBoatman->getName() << " has been restored to previous state and now has " << manyBoatman->getUnitAmount() << " soldiers." << endl;
+    delete manyBoatman; 
+    manyBoatman = nullptr; 
+    delete b; 
+    b = nullptr; 
+    delete boatmanProgess;
+    boatmanProgess = nullptr; 
+    cout << endl; 
+    cout << "testing memento for infantry"<< endl; 
+    InfantryFactory *i = new InfantryFactory(); 
+    Soldiers *manyInfantry = i->createUnit(100, "ManyInfantry"); 
+    cout << manyInfantry->getName() << " created with " << manyInfantry->getUnitAmount() << " soldiers" << endl; 
+    infantryProgress = manyInfantry->militusMemento();
+    cout<<"Infantry Unit " << manyInfantry->getName() << "'s progress has been saved!" << endl;
+    manyInfantry->engage(); 
+    manyInfantry->disengage(); 
+    cout << manyInfantry->getName() << " have returned from war with " << manyInfantry->getUnitAmount() << " soldiers" << endl; 
+    manyInfantry->vivificaMemento(infantryProgress);
+    cout<<"Infantry Unit " << manyInfantry->getName() << " has been restored to previous state and now has " << manyInfantry->getUnitAmount() << " soldiers." << endl;
+    delete manyInfantry; 
+    manyInfantry = nullptr; 
+    delete i; 
+    i = nullptr; 
+    delete infantryProgress;
+    infantryProgress = nullptr;
+    cout << endl; 
+    cout << "testing memento for shieldbearer"<< endl; 
+    ShieldBearerFactory *s = new ShieldBearerFactory(); 
+    Soldiers *manyShields = s->createUnit(100, "ManyShields"); 
+    cout << manyShields->getName() << " created with " << manyShields->getUnitAmount() << " soldiers" << endl; 
+    manyShields->engage(); 
+    manyShields->disengage(); 
+    cout << manyShields->getName() << " have returned from war with " << manyShields->getUnitAmount() << " soldiers" << endl; 
+    shieldProgress = manyShields->militusMemento();
+    cout<<"ShieldBearer Unit " << manyShields->getName() << "'s progress has been saved!" << endl;
+    manyShields->engage(); 
+    manyShields->disengage(); 
+    cout << manyShields->getName() << " have returned from war with " << manyShields->getUnitAmount() << " soldiers" << endl; 
+    manyShields->vivificaMemento(shieldProgress);
+    cout<<"ShieldBearer Unit " << manyShields->getName() << " has been restored to previous state and now has " << manyShields->getUnitAmount() << " soldiers." << endl;
+    delete manyShields; 
+    manyShields = nullptr; 
+    delete s; 
+    s = nullptr; 
+    delete shieldProgress;
+    shieldProgress = nullptr;
+
 }

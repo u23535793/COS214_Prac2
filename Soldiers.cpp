@@ -18,19 +18,9 @@ Soldiers::~Soldiers(){
 void Soldiers::engage(){
     prepare(); 
     execute(); 
-
 } 
 
 void Soldiers::disengage(){
     retreat();
     rest(); 
-
-}
-
-Memento* Soldiers::militusMemento(){
-
-}
-
-void Soldiers::vivificaMemento(Memento* mem){
-    
 }

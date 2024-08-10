@@ -24,6 +24,9 @@ class Boatman : public Soldiers
         void disengage(); //calls retreat and rest
         //from prototype
         virtual Soldiers* clone();
+        //from memento
+        virtual Memento* militusMemento(); // creates a memento containing a snapshot of its current state
+        virtual void vivificaMemento(Memento* mem); //restores its stae from the memento object 
  
     private:
         //from factory method

@@ -16,12 +16,10 @@ ShieldBearer::ShieldBearer(int num, string name){
     unitName = name;
     weapon = new Spear(); 
     inCombat = false;
-
 }
 
 Soldiers* ShieldBearer::clone(){
     return new ShieldBearer(this->amountOfSoldiersPerUnit, this->unitName);
-
 }
 
 void ShieldBearer::engage(){
@@ -35,13 +33,11 @@ void ShieldBearer::engage(){
     {
         cout << "All soldiers in ShieldBearer Uunit " << unitName << " have died. " << endl; 
     }
-
 }
 
 void ShieldBearer::disengage(){
     retreat();
     rest(); 
-
 }
 
 void ShieldBearer::prepare(){
@@ -50,7 +46,6 @@ void ShieldBearer::prepare(){
     damagePerSoldier = 0; 
     inCombat = true; 
     cout << "ShieldBearer Unit " << unitName << " is prepared for battle." << endl;
-
 }
 
 void ShieldBearer::execute(){
@@ -76,7 +71,6 @@ void ShieldBearer::retreat(){
     {
         cout << "ShieldBearer Unit " << unitName << " is retreating." << endl; 
     }
-
 }
 
 void ShieldBearer::rest(){
@@ -119,3 +113,24 @@ ShieldBearer::~ShieldBearer(){
     delete weapon; 
     weapon = nullptr; 
 } 
+
+Memento*ShieldBearer::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    return memento;
+}
+
+void ShieldBearer::vivificaMemento(Memento* mem){
+    Memento* restore = mem;
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
+}

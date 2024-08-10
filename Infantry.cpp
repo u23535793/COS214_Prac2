@@ -32,19 +32,16 @@ Infantry::Infantry(int num, string name){
 
 Soldiers* Infantry::clone(){
     return new Infantry(this->amountOfSoldiersPerUnit, this->unitName);
-    
 }
 
 void Infantry::engage(){
     prepare(); 
     execute(); 
-
 }
 
 void Infantry::disengage(){
     retreat();
     rest(); 
-
 }
 
 void Infantry::prepare(){
@@ -53,7 +50,6 @@ void Infantry::prepare(){
     damagePerSoldier = 0; 
     inCombat = true; 
     cout << "Infantry Unit " << unitName << " is prepared for battle." << endl; 
-
 }
 
 void Infantry::execute(){
@@ -68,7 +64,6 @@ void Infantry::execute(){
         dead = 3;   
     }
     else amountOfSoldiersPerUnit = amountOfSoldiersPerUnit - dead; 
-
 }
 
 void Infantry::retreat(){
@@ -79,8 +74,7 @@ void Infantry::retreat(){
     else 
     {
         cout << "Infantry Unit " << unitName << " is retreating." << endl; 
-    }
-    
+    } 
 }
 
 void Infantry::rest(){
@@ -122,4 +116,25 @@ string Infantry::getName(){
 Infantry::~Infantry(){
     delete weapon; 
     weapon = nullptr; 
+}
+
+Memento*Infantry::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    return memento;
+}
+
+void Infantry::vivificaMemento(Memento* mem){
+    Memento* restore = mem;
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
 }

@@ -12,6 +12,7 @@ class Spear : public Weapon
         virtual int useWeapon();
         virtual void reload(); 
         virtual int getSupply();
+        
 };
 
 #endif

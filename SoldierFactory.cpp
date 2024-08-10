@@ -4,10 +4,6 @@
 #include <iostream>
 using namespace std; 
 
-void SoldierFactory::setSoldiers(Soldiers* soldiers){
-    this->soldiers = soldiers;
-}
+SoldierFactory::~SoldierFactory(){
 
-Soldiers* SoldierFactory::getSoldiers(){
-    return soldiers;
 }

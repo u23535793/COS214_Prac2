@@ -12,6 +12,7 @@ class Sword : public Weapon
         virtual int useWeapon();
         virtual void reload(); 
         virtual int getSupply();
+        
 };
 
 #endif

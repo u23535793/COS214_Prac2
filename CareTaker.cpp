@@ -16,12 +16,11 @@ void CareTaker::storeMemento(Memento* memento){
 }
 
 CareTaker::~CareTaker(){
-//    for (int i = 0; i < mementos.size(); ++i) {
-//         if (mementos[i] != nullptr) {
-//             delete mementos[i];
-//             mementos[i] = nullptr;
-//         }
-//     }
-
+   for (int i = 0; i < mementos.size(); ++i) {
+        if (mementos[i] != nullptr) {
+            delete mementos[i];
+            mementos[i] = nullptr;
+        }
+    }
     mementos.clear();
 }

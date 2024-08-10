@@ -13,3 +13,4 @@ Memento::Memento(int health, int damage, int defence, int unitAmount, string uni
     this->unitName = unitName;
     CareTaker::storeMemento(this);
 }
+

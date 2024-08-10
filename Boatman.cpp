@@ -4,6 +4,7 @@
 #include "Weapon.h"
 #include "Cannon.h"
 #include "SoldierFactory.h"
+#include "CareTaker.h"
 
 #include <iostream>
 using namespace std; 
@@ -29,7 +30,6 @@ Boatman::Boatman(int num, string name){
 
 Soldiers* Boatman::clone(){
     return new Boatman(this->amountOfSoldiersPerUnit, this->unitName);
-
 }
 
 void Boatman::engage(){
@@ -86,7 +86,6 @@ void Boatman::retreat(){
     {
         cout << "Boatman Unit " << unitName << " is retreating." << endl; 
     }
-
 }
 
 void Boatman::rest(){
@@ -128,4 +127,25 @@ string Boatman::getName(){
 Boatman::~Boatman(){
     delete weapon; 
     weapon = nullptr; 
+}
+
+Memento*Boatman::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    return memento;
+}
+
+void Boatman::vivificaMemento(Memento* mem){
+    Memento* restore = CareTaker::retrieveMemento(mem);
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
 }

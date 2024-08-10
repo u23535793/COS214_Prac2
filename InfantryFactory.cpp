@@ -5,26 +5,23 @@
 using namespace std;
 
 Soldiers* InfantryFactory::createUnit(int num, string name){
-
     Soldiers* boatmen = new Infantry(num, name);
-    SoldierFactory::setSoldiers(boatmen);
+    soldiers = boatmen;
     return boatmen;
 }
 
 int InfantryFactory::calculateTotalHealthPerUnit(){
-
-    Soldiers* soldiers = SoldierFactory::getSoldiers();
     return soldiers->getUnitAmount()*soldiers->getHealth();
 }
-int InfantryFactory::calculateTotalDamagePerUnit(){
 
-    Soldiers* soldiers = SoldierFactory::getSoldiers();
+int InfantryFactory::calculateTotalDamagePerUnit(){
     return soldiers->getUnitAmount()*soldiers->getDamage();
 }
+
 int InfantryFactory::calculateTotalDefencePerUnit(){
-    Soldiers* soldiers = SoldierFactory::getSoldiers();
     return soldiers->getUnitAmount()*soldiers->getDefence();
 }
+
 InfantryFactory::~InfantryFactory(){
-    SoldierFactory::setSoldiers(nullptr);
+    soldiers = nullptr; 
 }
