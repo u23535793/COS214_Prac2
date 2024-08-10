@@ -14,10 +14,12 @@ class Memento
         string unitName;
         Memento(int health, int damage, int defence, int unitAmount, string unitName); 
         int getHealth();
-        friend class Soldiers;
-        friend class Boatman;
 
-        
+    public:
+        friend class Infantry;
+        friend class Boatman;
+        friend class ShieldBearer;
+
 };
 
 #endif

@@ -123,3 +123,25 @@ Infantry::~Infantry(){
     delete weapon; 
     weapon = nullptr; 
 }
+
+Memento*Infantry::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    return memento;
+}
+
+void Infantry::vivificaMemento(Memento* mem){
+
+    Memento* restore = mem;
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
+}

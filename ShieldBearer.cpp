@@ -118,3 +118,24 @@ ShieldBearer::~ShieldBearer(){
     delete weapon; 
     weapon = nullptr; 
 } 
+
+Memento*ShieldBearer::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    return memento;
+}
+void ShieldBearer::vivificaMemento(Memento* mem){
+
+    Memento* restore = mem;
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
+}
