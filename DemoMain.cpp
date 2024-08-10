@@ -40,7 +40,7 @@
 //     cout << "3 Factories Created" << endl; 
 //     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
     
-//     //creating intital units
+//     //creating intital units using factory 
 //     cout << "LEVEL 1: Create Units..." << endl << endl; 
 //     //create boatmen units
 //     char response = 'N'; 
@@ -139,25 +139,25 @@
 //     cout << "You have " << count << " units in your army." << endl; 
 //     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
-//     //create damage to enemy land
+//     //create damage to enemy land using template method 
 //     cout << "LEVEL 2: Damage Enemy Land..." << endl << endl; 
 //     cout << "Your army has reached Enemy Land" << endl << endl; 
 //     if (haveBoatmanUnit)
 //     {
 //         manyBoatmen->engage();
-//         manyBoatmen->disenagage(); 
+//         manyBoatmen->disengage(); 
 //         cout << endl; 
 //     }
 //     if (haveInfantryUnit)
 //     {
 //         manyInfantryMen->engage(); 
-//         manyInfantryMen->disenagage(); 
+//         manyInfantryMen->disengage(); 
 //         cout << endl; 
 //     }
 //     if (haveShieldbearerUnit)
 //     {
 //         manyShieldbearers->engage(); 
-//         manyShieldbearers->disenagage(); 
+//         manyShieldbearers->disengage(); 
 //         cout << endl; 
 //     }
     
@@ -168,7 +168,7 @@
 //     }
 //     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
-//     //save progress
+//     //save progress using memento
 //     cout << "Would you like to save your current progress? [Y/N] ";
 //     cin >> response;
 //     if (response == 'y' || response == 'Y') 
@@ -177,7 +177,7 @@
 //     }
 //     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
-//     //create fight enemies
+//     //fight enemies using template method
 //     cout << "LEVEL 3: Fighting Enemy Soldiers..." << endl << endl; 
 
 //     if (haveBoatmanUnit)
@@ -199,12 +199,12 @@
 //             if (enemyBoatmen->getNumber() <= 0)
 //             {
 //                 cout << "Enemy Boatman have been defeated!" << endl; 
-//                 manyBoatmen->disenagage(); 
+//                 manyBoatmen->disengage(); 
 
 //             }
 //             else 
 //             {
-//                 manyBoatmen->disenagage(); 
+//                 manyBoatmen->disengage(); 
 //                 cout << "Enemy Boatmen have defeated Boatman Unit "<< manyBoatmen->getName()  << "." << endl; 
 //                 haveBoatmanUnit = false; 
 //             }
@@ -239,11 +239,11 @@
 //             if (enemyInfantry->getNumber() <= 0)
 //             {
 //                 cout << "Enemy Infantry have been defeated!" << endl; 
-//                 manyInfantryMen->disenagage(); 
+//                 manyInfantryMen->disengage(); 
 //             }
 //             else 
 //             {
-//                 manyInfantryMen->disenagage(); 
+//                 manyInfantryMen->disengage(); 
 //                 cout << "Enemy Infantry have defeated Infantry Unit "<< manyInfantryMen->getName()  << "." << endl; 
 //                 haveInfantryUnit = false; 
 //             }
@@ -278,12 +278,12 @@
 //             if (enemyShielders->getNumber() <= 0)
 //             {
 //                 cout << "Enemy ShieldBearers have been defeated!" << endl; 
-//                 manyShieldbearers->disenagage(); 
+//                 manyShieldbearers->disengage(); 
 
 //             }
 //             else 
 //             {
-//                 manyShieldbearers->disenagage(); 
+//                 manyShieldbearers->disengage(); 
 //                 cout << "Enemy ShieldBearers have defeated ShieldBearer Unit "<< manyShieldbearers->getName()  << "." << endl; 
 //                 haveShieldbearerUnit = false; 
 //             }
@@ -304,7 +304,22 @@
 //     {
 //         cout << "You have no units available in your army to fight enemies." << endl; 
 //     }
-    
+
+//     //revert back using memento
+//     cout << "Would you like to revert back to previously saved state? [Y/N] ";
+//     cin >> response;
+//     if (response == 'y' || response == 'Y') 
+//     {
+
+//     }
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+
+//     //increase army using prototype
+//     cout << "LEVEL 4: Increase your army..." << endl << endl; 
+
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+
+//     //deletes
 //     delete manyBoatmen; 
 //     manyBoatmen = nullptr; 
 //     delete manyInfantryMen; 

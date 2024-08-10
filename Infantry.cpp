@@ -23,7 +23,7 @@ using namespace std;
 Infantry::Infantry(int num, string name):Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
     healthPerSoldier = 100;
     damagePerSoldier = 0;
-    defencePerSoldier = 50;
+    defencePerSoldier = 0;
     amountOfSoldiersPerUnit = num;
     unitName = name;
     weapon = new Sword(); 
@@ -41,7 +41,7 @@ void Infantry::engage(){
 
 }
 
-void Infantry::disenagage(){
+void Infantry::disengage(){
     retreat();
     rest(); 
 
@@ -91,6 +91,12 @@ void Infantry::rest(){
         defencePerSoldier = 0; 
         cout << "Infantry Unit " << unitName << " is resting. " << endl; 
     } 
+    else 
+    {
+        healthPerSoldier = 0;
+        damagePerSoldier = 0; 
+        defencePerSoldier = 0;
+    }
 } 
 
 int Infantry::getHealth(){

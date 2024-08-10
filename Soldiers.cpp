@@ -32,9 +32,8 @@ void Soldiers::engage(){
 
 } 
 
-void Soldiers::disenagage(){
+void Soldiers::disengage(){
     retreat();
     rest(); 
 
 }
- 
