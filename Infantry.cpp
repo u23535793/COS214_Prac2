@@ -20,7 +20,7 @@ using namespace std;
         Weapon* weapon; 
         bool inCombat;           */
 
-Infantry::Infantry(int num, string name){
+Infantry::Infantry(int num, string name):Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
     healthPerSoldier = 100;
     damagePerSoldier = 0;
     defencePerSoldier = 50;

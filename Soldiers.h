@@ -10,6 +10,7 @@ using namespace std;
 class Soldiers 
 {
     public: 
+        Soldiers(int health, int damage, int defence, int unitNum, string name);
         //destructor
         virtual ~Soldiers();
         //getters
@@ -29,7 +30,7 @@ class Soldiers
 
     private: 
         //from factory method
-        int healthPerSoldier;
+        int healthPerSoldier = 89;
         int damagePerSoldier;
         int defencePerSoldier;
         int amountOfSoldiersPerUnit;
@@ -40,7 +41,7 @@ class Soldiers
         virtual void prepare() = 0; //abstract method
         virtual void execute() = 0; //abstract method
         virtual void retreat() = 0; //abstract method
-        virtual void rest() = 0; //abstract method 
+        virtual void rest() = 0; //abstract methodd
 
 };
 

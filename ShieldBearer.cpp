@@ -8,7 +8,7 @@ carries it for a higher ranking person. */
 #include <iostream>
 using namespace std; 
 
-ShieldBearer::ShieldBearer(int num, string name){
+ShieldBearer::ShieldBearer(int num, string name):Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
     healthPerSoldier = 100;
     damagePerSoldier = 0;
     defencePerSoldier = 50;
@@ -16,7 +16,6 @@ ShieldBearer::ShieldBearer(int num, string name){
     unitName = name;
     weapon = new Spear(); 
     inCombat = false;
-
 }
 
 Soldiers* ShieldBearer::clone(){

@@ -13,6 +13,15 @@ using namespace std;
         string unitName;
         Weapon* weapon               */
 
+Soldiers::Soldiers(int health, int damage, int defence, int unitNum, string name)
+{
+    this->healthPerSoldier = health;
+    damagePerSoldier = damage;
+    defencePerSoldier = defence;
+    amountOfSoldiersPerUnit = unitNum;
+    unitName = name;
+}
+
 Soldiers::~Soldiers(){
     
 }
@@ -30,7 +39,9 @@ void Soldiers::disenagage(){
 }
  
 Memento*Soldiers::militusMemento(){
-    Memento* memento = new Memento(this->healthPerSoldier,this->damagePerSoldier, this->defencePerSoldier, this->amountOfSoldiersPerUnit, this->unitName);
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    cout<<"Health per soldier in militus is:" << healthPerSoldier;
+    cout<<"Health in militus is:" <<memento->getHealth();
     return memento;
 }
 void Soldiers::vivificaMemento(Memento* mem){
@@ -43,13 +54,12 @@ void Soldiers::vivificaMemento(Memento* mem){
         return;
     }
     
-    this->healthPerSoldier = restore->healthPerSoldier;
+    cout<<"Health per soldier is " << restore->healthPerSoldier << endl;
+    cout<<"Damage per soldier is " << restore->damagePerSoldier << endl;
+
+    this->healthPerSoldier = restore->getHealth();
     this->damagePerSoldier = restore->damagePerSoldier;
     this->defencePerSoldier = restore->defencePerSoldier;
     this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
     this->unitName = restore->unitName;
-}
-
-Soldiers::~Soldiers(){
-    // delete weapon; 
 }

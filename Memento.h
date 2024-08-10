@@ -13,6 +13,7 @@ class Memento
         int amountOfSoldiersPerUnit;
         string unitName;
         Memento(int health, int damage, int defence, int unitAmount, string unitName); 
+        int getHealth();
         friend class Soldiers;
         
 };

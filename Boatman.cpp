@@ -16,7 +16,7 @@ using namespace std;
         Weapon* weapon; 
         bool inCombat;           */
 
-Boatman::Boatman(int num, string name){
+Boatman::Boatman(int num, string name):Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
     healthPerSoldier = 100;
     damagePerSoldier = 0;
     defencePerSoldier = 0;
