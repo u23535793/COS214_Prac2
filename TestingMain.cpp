@@ -71,9 +71,9 @@ int main()
         }        
     }
 
-    cout<<"The health of many men before restoration is:" << manyMen->getHealth() <<endl;
+    cout<<"The damage of many men before restoration is:" << manyMen->getDamage() <<endl;
     manyMen->vivificaMemento(manyMenState);
-    cout<<"The health of many men after restoration is:" << manyMen->getHealth() <<endl;
+    cout<<"The damage of many men after restoration is:" << manyMen->getDamage() <<endl;
     
     delete boatmen1;
     

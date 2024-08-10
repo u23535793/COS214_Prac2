@@ -25,8 +25,8 @@ class Soldiers
         virtual void engage(); //calls prepare and execute 
         virtual void disenagage(); //calls retreat and rest
         //from memento
-        Memento* militusMemento(); // creates a memento containing a snapshot of its current state
-        void vivificaMemento(Memento* mem); //restores its stae from the memento object 
+        virtual Memento* militusMemento() = 0; // creates a memento containing a snapshot of its current state
+        virtual void vivificaMemento(Memento* mem) = 0; //restores its stae from the memento object 
 
     private: 
         //from factory method

@@ -24,6 +24,9 @@ class ShieldBearer : public Soldiers
         void disenagage(); //calls retreat and rest
         //from prototype
         virtual Soldiers* clone();
+        virtual Memento* militusMemento(); // creates a memento containing a snapshot of its current state
+        virtual void vivificaMemento(Memento* mem); //restores its stae from the memento object 
+ 
 
     private:
         //from factory method 

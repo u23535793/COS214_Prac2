@@ -16,7 +16,7 @@ using namespace std;
         Weapon* weapon; 
         bool inCombat;           */
 
-Boatman::Boatman(int num, string name):Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
+Boatman::Boatman(int num, string name): Soldiers(healthPerSoldier, damagePerSoldier, defencePerSoldier, num, name){
     healthPerSoldier = 100;
     damagePerSoldier = 0;
     defencePerSoldier = 0;
@@ -120,4 +120,30 @@ string Boatman::getName(){
 Boatman::~Boatman(){
     delete weapon; 
     weapon = nullptr; 
+}
+
+Memento*Boatman::militusMemento(){
+    Memento* memento = new Memento(healthPerSoldier,damagePerSoldier, defencePerSoldier, amountOfSoldiersPerUnit, unitName);
+    cout<<"Health per soldier in militus is:" << healthPerSoldier;
+    cout<<"Health in militus is:" <<memento->getHealth();
+    return memento;
+}
+void Boatman::vivificaMemento(Memento* mem){
+
+    Memento* restore = mem;
+
+    if(restore == nullptr)
+    {
+        cout<<"The memento does not exists." << endl;
+        return;
+    }
+    
+    cout<<"Health per soldier is " << restore->healthPerSoldier << endl;
+    cout<<"Damage per soldier is " << restore->damagePerSoldier << endl;
+
+    this->healthPerSoldier = restore->healthPerSoldier;
+    this->damagePerSoldier = restore->damagePerSoldier;
+    this->defencePerSoldier = restore->defencePerSoldier;
+    this->amountOfSoldiersPerUnit = restore->amountOfSoldiersPerUnit;
+    this->unitName = restore->unitName;
 }
