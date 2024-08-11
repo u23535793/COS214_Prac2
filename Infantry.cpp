@@ -32,19 +32,16 @@ Infantry::Infantry(int num, string name):Soldiers(healthPerSoldier, damagePerSol
 
 Soldiers* Infantry::clone(){
     return new Infantry(this->amountOfSoldiersPerUnit, this->unitName);
-    
 }
 
 void Infantry::engage(){
     prepare(); 
     execute(); 
-
 }
 
 void Infantry::disengage(){
     retreat();
     rest(); 
-
 }
 
 void Infantry::prepare(){
@@ -53,7 +50,6 @@ void Infantry::prepare(){
     damagePerSoldier = 0; 
     inCombat = true; 
     cout << "Infantry Unit " << unitName << " is prepared for battle." << endl; 
-
 }
 
 void Infantry::execute(){
@@ -68,7 +64,6 @@ void Infantry::execute(){
         dead = 3;   
     }
     else amountOfSoldiersPerUnit = amountOfSoldiersPerUnit - dead; 
-
 }
 
 void Infantry::retreat(){
@@ -79,8 +74,7 @@ void Infantry::retreat(){
     else 
     {
         cout << "Infantry Unit " << unitName << " is retreating." << endl; 
-    }
-    
+    } 
 }
 
 void Infantry::rest(){
@@ -130,7 +124,6 @@ Memento*Infantry::militusMemento(){
 }
 
 void Infantry::vivificaMemento(Memento* mem){
-
     Memento* restore = mem;
 
     if(restore == nullptr)

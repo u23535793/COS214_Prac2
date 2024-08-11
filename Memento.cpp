@@ -14,7 +14,3 @@ Memento::Memento(int health, int damage, int defence, int unitAmount, string uni
     CareTaker::storeMemento(this);
 }
 
-int Memento::getHealth()
-{
-    return this->healthPerSoldier;
-}

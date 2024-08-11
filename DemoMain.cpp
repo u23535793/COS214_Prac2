@@ -1,18 +1,17 @@
-#include <iostream>
+// #include "Boatman.h"
+// #include "BoatmanFactory.h"
+// #include "Enemies.h"
+// #include "Infantry.h"
+// #include "InfantryFactory.h"
+// #include "ShieldBearer.h"
+// #include "ShieldBearerFactory.h"
+// #include "Soldiers.h"
+// #include "SoldierFactory.h"
 
-#include "Boatman.h"
-#include "BoatmanFactory.h"
-#include "Enemies.h"
-#include "Infantry.h"
-#include "InfantryFactory.h"
-#include "ShieldBearer.h"
-#include "ShieldBearerFactory.h"
-#include "Soldiers.h"
-#include "SoldierFactory.h"
-
-using namespace std;
-using std::cout;
-using std::endl;
+// #include <iostream>
+// using namespace std;
+// using std::cout;
+// using std::endl;
 
 int main()
 {
@@ -168,29 +167,35 @@ int main()
     }
     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
-    //save progress using memento
-    Memento* boatmanProgess, *infantryProgress, *shieldProgress;
-    cout << "Would you like to save your current progress? [Y/N] ";
-    cin >> response;
-    if (response == 'y' || response == 'Y') 
-    {
-        if(haveBoatmanUnit){
-            boatmanProgess = manyBoatmen->militusMemento();
-            cout<<"Unit " << manyBoatmen->getName() << "'s progress has been saved!" << endl;
+//     //save progress using memento
+//     bool progressSaved = false; 
+//     Memento* boatmanProgess = nullptr;
+//     Memento *infantryProgress = nullptr;
+//     Memento *shieldProgress = nullptr;
+//     cout << "Would you like to save your current progress? [Y/N] ";
+//     cin >> response;
+//     if (response == 'y' || response == 'Y') 
+//     {
+//         progressSaved = true; 
 
-        }
-        if(haveInfantryUnit){
-            infantryProgress = manyInfantryMen->militusMemento();
-            cout<<"Unit " << manyInfantryMen->getName() << "'s progress has been saved!" << endl;
-
-        }
-        if(haveShieldbearerUnit){
-            shieldProgress = manyShieldbearers->militusMemento();
-            cout<<"Unit " << manyShieldbearers->getName() << "'s progress has been saved!" << endl;
-
-        }
-    }
-    cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+//         if(haveBoatmanUnit){
+//             boatmanProgess = manyBoatmen->militusMemento();
+//             cout<<"Boatman Unit " << manyBoatmen->getName() << "'s progress has been saved!" << endl;
+//         }
+//         if(haveInfantryUnit){
+//             infantryProgress = manyInfantryMen->militusMemento();
+//             cout<<"Infantry Unit " << manyInfantryMen->getName() << "'s progress has been saved!" << endl;
+//         }
+//         if(haveShieldbearerUnit){
+//             shieldProgress = manyShieldbearers->militusMemento();
+//             cout<<"ShieldBearer Unit " << manyShieldbearers->getName() << "'s progress has been saved!" << endl;
+//         }
+//     }
+//     else 
+//     {
+//         cout << "Progress has not been saved." << endl << "You will not be able to revert back to previous state." << endl; 
+//     }
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
     //fight enemies using template method
     cout << "LEVEL 3: Fighting Enemy Soldiers..." << endl << endl; 
@@ -216,144 +221,229 @@ int main()
                 cout << "Enemy Boatman have been defeated!" << endl; 
                 manyBoatmen->disengage(); 
 
-            }
-            else 
-            {
-                manyBoatmen->disengage(); 
-                cout << "Enemy Boatmen have defeated Boatman Unit "<< manyBoatmen->getName()  << "." << endl; 
-                haveBoatmanUnit = false; 
-            }
+//             }
+//             else 
+//             {
+//                 manyBoatmen->disengage(); 
+//                 cout << "Enemy Boatmen have defeated Boatman Unit "<< manyBoatmen->getName()  << "." << endl; 
+//                 if (!progressSaved)
+//                     haveBoatmanUnit = false; 
+//             }
 
-        }
-        else if (response == 's' || response == 'S')
-        {
-            cout << "Boatman Unit " << manyBoatmen->getName() << " have surrended." << endl; 
-            cout << "Boatman Unit " << manyBoatmen->getName() << " has been removed from your army." << endl; 
-            haveBoatmanUnit = false; 
-        }
-        delete enemyBoatmen; 
-        enemyBoatmen = nullptr; 
-        cout << endl; 
-    }
-    if (haveInfantryUnit)
-    {
-        Enemies* enemyInfantry = new Enemies(400, "enemyInfantry");
-        cout << "Enemy Infantry have arrived." << endl; 
-        cout << "Would you like to fight or surrender? [F/S] "; 
-        cin >> response;
-        cout << endl; 
-        if (response == 'f' || response == 'F')
-        {
-            cout << "Fighting Enemy Infantry" << endl; 
-            while (manyInfantryMen->getUnitAmount() != 0 && enemyInfantry->getNumber() != 0)
-            {
-                manyInfantryMen->engage();
-                enemyInfantry->takeDamage(); 
-            }
-            cout << endl; 
-            if (enemyInfantry->getNumber() <= 0)
-            {
-                cout << "Enemy Infantry have been defeated!" << endl; 
-                manyInfantryMen->disengage(); 
-            }
-            else 
-            {
-                manyInfantryMen->disengage(); 
-                cout << "Enemy Infantry have defeated Infantry Unit "<< manyInfantryMen->getName()  << "." << endl; 
-                haveInfantryUnit = false; 
-            }
+//         }
+//         else if (response == 's' || response == 'S')
+//         {
+//             cout << "Boatman Unit " << manyBoatmen->getName() << " have surrended." << endl; 
+//             cout << "Boatman Unit " << manyBoatmen->getName() << " has been removed from your army." << endl; 
+//             if (!progressSaved)
+//                 haveBoatmanUnit = false; 
+//         }
+//         delete enemyBoatmen; 
+//         enemyBoatmen = nullptr; 
+//         cout << endl; 
+//     }
+//     if (haveInfantryUnit)
+//     {
+//         Enemies* enemyInfantry = new Enemies(300, "enemyInfantry");
+//         cout << "Enemy Infantry have arrived." << endl; 
+//         cout << "Would you like to fight or surrender? [F/S] "; 
+//         cin >> response;
+//         cout << endl; 
+//         if (response == 'f' || response == 'F')
+//         {
+//             cout << "Fighting Enemy Infantry" << endl; 
+//             while (manyInfantryMen->getUnitAmount() != 0 && enemyInfantry->getNumber() != 0)
+//             {
+//                 manyInfantryMen->engage();
+//                 enemyInfantry->takeDamage(); 
+//             }
+//             cout << endl; 
+//             if (enemyInfantry->getNumber() <= 0)
+//             {
+//                 cout << "Enemy Infantry have been defeated!" << endl; 
+//                 manyInfantryMen->disengage(); 
+//             }
+//             else 
+//             {
+//                 manyInfantryMen->disengage(); 
+//                 cout << "Enemy Infantry have defeated Infantry Unit "<< manyInfantryMen->getName()  << "." << endl;
+//                 if (!progressSaved)
+//                     haveInfantryUnit = false; 
+//             }
 
-        }
-        else if (response == 's' || response == 'S')
-        {
-            cout << "Infantry Unit " << manyInfantryMen->getName() << " have surrended." << endl; 
-            cout << "Infantry Unit " << manyInfantryMen->getName() << " has been removed from your army." << endl; 
-            haveInfantryUnit = false; 
-        }
-        delete enemyInfantry; 
-        enemyInfantry = nullptr; 
-        cout << endl; 
-    }
-    if (haveShieldbearerUnit)
-    {
-        Enemies* enemyShielders = new Enemies(300, "enemyShieldBearers");
-        cout << "Enemy ShieldBearers have arrived." << endl; 
-        cout << "Would you like to fight or surrender? [F/S] "; 
-        cin >> response;
-        cout << endl; 
-        if (response == 'f' || response == 'F')
-        {
-            cout << "Fighting Enemy ShieldBearers" << endl; 
-            while (manyShieldbearers->getUnitAmount() != 0 && enemyShielders->getNumber() != 0)
-            {
-                manyShieldbearers->engage();
-                enemyShielders->takeDamage(); 
-            }
-            cout << endl; 
-            if (enemyShielders->getNumber() <= 0)
-            {
-                cout << "Enemy ShieldBearers have been defeated!" << endl; 
-                manyShieldbearers->disengage(); 
+//         }
+//         else if (response == 's' || response == 'S')
+//         {
+//             cout << "Infantry Unit " << manyInfantryMen->getName() << " have surrended." << endl; 
+//             cout << "Infantry Unit " << manyInfantryMen->getName() << " has been removed from your army." << endl; 
+//             if (!progressSaved)
+//                 haveInfantryUnit = false; 
+//         }
+//         delete enemyInfantry; 
+//         enemyInfantry = nullptr; 
+//         cout << endl; 
+//     }
+//     if (haveShieldbearerUnit)
+//     {
+//         Enemies* enemyShielders = new Enemies(300, "enemyShieldBearers");
+//         cout << "Enemy ShieldBearers have arrived." << endl; 
+//         cout << "Would you like to fight or surrender? [F/S] "; 
+//         cin >> response;
+//         cout << endl; 
+//         if (response == 'f' || response == 'F')
+//         {
+//             cout << "Fighting Enemy ShieldBearers" << endl; 
+//             while (manyShieldbearers->getUnitAmount() != 0 && enemyShielders->getNumber() != 0)
+//             {
+//                 manyShieldbearers->engage();
+//                 enemyShielders->takeDamage(); 
+//             }
+//             cout << endl; 
+//             if (enemyShielders->getNumber() <= 0)
+//             {
+//                 cout << "Enemy ShieldBearers have been defeated!" << endl; 
+//                 manyShieldbearers->disengage(); 
 
-            }
-            else 
-            {
-                manyShieldbearers->disengage(); 
-                cout << "Enemy ShieldBearers have defeated ShieldBearer Unit "<< manyShieldbearers->getName()  << "." << endl; 
-                haveShieldbearerUnit = false; 
-            }
+//             }
+//             else 
+//             {
+//                 manyShieldbearers->disengage(); 
+//                 cout << "Enemy ShieldBearers have defeated ShieldBearer Unit "<< manyShieldbearers->getName()  << "." << endl; 
+//                 if (!progressSaved)
+//                     haveShieldbearerUnit = false; 
+//             }
 
-        }
-        else if (response == 's' || response == 'S')
-        {
-            cout << "ShieldBearer Unit " << manyShieldbearers->getName() << " have surrended." << endl; 
-            cout << "ShieldBearer Unit " << manyShieldbearers->getName() << " has been removed from your army." << endl; 
-            haveShieldbearerUnit = false; 
-        }
-        delete enemyShielders; 
-        enemyShielders = nullptr; 
-        cout << endl; 
-    }
+//         }
+//         else if (response == 's' || response == 'S')
+//         {
+//             cout << "ShieldBearer Unit " << manyShieldbearers->getName() << " have surrended." << endl; 
+//             cout << "ShieldBearer Unit " << manyShieldbearers->getName() << " has been removed from your army." << endl; 
+//             if (!progressSaved)
+//                 haveShieldbearerUnit = false; 
+//         }
+//         delete enemyShielders; 
+//         enemyShielders = nullptr; 
+//         cout << endl; 
+//     }
 
     if (!haveBoatmanUnit && !haveInfantryUnit && !haveShieldbearerUnit)
     {
         cout << "You have no units available in your army to fight enemies." << endl; 
     }
 
-    //revert back using memento
-    cout << "Would you like to revert back to previously saved state? [Y/N] ";
-    cin >> response;
-    if (response == 'y' || response == 'Y') 
-    {
-        if(haveBoatmanUnit){
-            manyBoatmen->vivificaMemento(boatmanProgess);
-            cout<<"Unit " << manyBoatmen->getName() << " has been restored to previous state and now has " << manyBoatmen->getUnitAmount() << " boatmen." << endl;
-        }
-        if(haveInfantryUnit){
-            manyInfantryMen->vivificaMemento(infantryProgress);
-            cout<<"Unit " << manyInfantryMen->getName() << " has been restored to previous state and now has " << manyInfantryMen->getUnitAmount() << " infantry men." << endl;
-        }
-
-        if(haveShieldbearerUnit){
-           manyShieldbearers->vivificaMemento(shieldProgress);
-           cout<<"Unit " << manyShieldbearers->getName() << " has been restored to previous state and now has " << manyShieldbearers->getUnitAmount() << " shieldbearers." << endl;
-        }
-    }
+//     //revert back using memento
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+//     if (progressSaved)
+//     {
+//         cout << "Would you like to revert back to previously saved state? [Y/N] ";
+//         cin >> response;
+//         if (response == 'y' || response == 'Y') 
+//         {
+//             if(haveBoatmanUnit){
+//             manyBoatmen->vivificaMemento(boatmanProgess);
+//             cout<<"Boatman Unit " << manyBoatmen->getName() << " has been restored to previous state and now has " << manyBoatmen->getUnitAmount() << " soldiers." << endl;
+//             }
+//             if(haveInfantryUnit){
+//                 manyInfantryMen->vivificaMemento(infantryProgress);
+//                 cout<<"Infantry Unit " << manyInfantryMen->getName() << " has been restored to previous state and now has " << manyInfantryMen->getUnitAmount() << " soldiers." << endl;
+//             }
+//             if(haveShieldbearerUnit){
+//             manyShieldbearers->vivificaMemento(shieldProgress);
+//             cout<<"ShieldBearer Unit " << manyShieldbearers->getName() << " has been restored to previous state and now has " << manyShieldbearers->getUnitAmount() << " soldiers." << endl;
+//             }
+//         }
+//         else
+//         {
+//             cout << "Army has not been reverted back to previous saved state." << endl; 
+//             if (haveBoatmanUnit && manyBoatmen->getUnitAmount() == 0)
+//                 haveBoatmanUnit = false;
+//             if (haveInfantryUnit && manyInfantryMen->getUnitAmount() == 0)
+//                 haveInfantryUnit = false;
+//             if (haveShieldbearerUnit && manyShieldbearers->getUnitAmount() == 0)
+//                 haveShieldbearerUnit = false;
+//         }
+//         cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+//     }
     
-    cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+//     //increase army using prototype
+//     cout << "LEVEL 4: Increase your army..." << endl << endl; 
+//     cout << "You now have the ability to clone one of your units." << endl; 
+//     cout << "1. Boatman Unit" << endl; 
+//     cout << "2. Infantry Unit" << endl;
+//     cout << "3. ShieldBearer Unit" << endl;
+//     cout << "4. Don't Clone" << endl;
+//     cout << "Choose a unit to clone [Enter 1, 2, 3 or 4]: "; 
+//     int choice = 0; 
+//     cin >> choice; 
+//     Soldiers *clone = nullptr; 
+//     switch (choice) 
+//     {
+//         case 1:
+//             if (haveBoatmanUnit)
+//             {
+//                 clone = manyBoatmen->clone(); 
+//                 cout << "Cloned Boatman Unit " << clone->getName() << endl; 
+//             }
+//             else 
+//             {
+//                 cout << "You don't have a Boatman Unit to clone." << endl; 
+//             }
+//             break;
+//         case 2:
+//             if (haveInfantryUnit)
+//             {
+//                 clone = manyInfantryMen->clone(); 
+//                 cout << "Cloned Infantry Unit " << clone->getName() << endl; 
+//             }
+//             else 
+//             {
+//                 cout << "You don't have an Infantry Unit to clone." << endl; 
+//             }
+//             break;
+//         case 3:
+//             if (haveShieldbearerUnit)
+//             {
+//                 clone = manyShieldbearers->clone(); 
+//                 cout << "Cloned ShieldBearer Unit " << clone->getName() << endl; 
+//             }
+//             else 
+//             {
+//                 cout << "You don't have a ShieldBearer Unit to clone." << endl; 
+//             }
+//             break;
+//         case 4:
+//             cout << "No units have been cloned." << endl; 
+//             break;
+//         default:
+//             cout << "Invalid number entered. No units have been cloned." << endl; 
+//             break;
+//     }
 
-    //increase army using prototype
-    cout << "LEVEL 4: Increase your army..." << endl << endl; 
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+//     cout << endl; 
+//     cout << "You have reached the end of the demo for The Call Of Destiny." << endl; 
+//     cout << "Please purchase the game to continue playing :)" << endl; 
+//     cout << "------------------------------------------------------------------------------------------------------------------" << endl;
 
-    cout << "------------------------------------------------------------------------------------------------------------------" << endl;
+// //OBJECT DIAGRAM CREATED AT THIS POINT 
 
-    //deletes
-    delete manyBoatmen; 
-    manyBoatmen = nullptr; 
-    delete manyInfantryMen; 
-    manyInfantryMen = nullptr; 
-    delete manyShieldbearers; 
-    manyShieldbearers = nullptr; 
+//     //deletes
+//     delete clone; 
+//     clone = nullptr; 
+
+//     delete boatmanProgess; 
+//     boatmanProgess = nullptr; 
+//     delete infantryProgress; 
+//     infantryProgress = nullptr; 
+//     delete shieldProgress; 
+//     shieldProgress = nullptr; 
+
+//     delete manyBoatmen; 
+//     manyBoatmen = nullptr; 
+//     delete manyInfantryMen; 
+//     manyInfantryMen = nullptr; 
+//     delete manyShieldbearers; 
+//     manyShieldbearers = nullptr; 
 
     delete boatmen1;
     boatmen1 = nullptr;
