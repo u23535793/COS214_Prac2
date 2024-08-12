@@ -21,8 +21,8 @@ class Soldiers
         //from prototype
         virtual Soldiers* clone() = 0; // pure virutal? 
         //from template method 
-        virtual void engage(); //calls prepare and execute 
-        virtual void disengage(); //calls retreat and rest
+        virtual void engage() = 0; //calls prepare and execute 
+        virtual void disengage() = 0; //calls retreat and rest
         //from memento
         virtual Memento* militusMemento() = 0; // creates a memento containing a snapshot of its current state
         virtual void vivificaMemento(Memento* mem) = 0; //restores its stae from the memento object 

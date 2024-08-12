@@ -14,13 +14,3 @@ using namespace std;
 Soldiers::~Soldiers(){
     
 }
-
-void Soldiers::engage(){
-    prepare(); 
-    execute(); 
-} 
-
-void Soldiers::disengage(){
-    retreat();
-    rest(); 
-}
